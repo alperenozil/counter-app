@@ -3,16 +3,21 @@ import React, { Component } from 'react'
 export class Counter extends Component {
     state={ 
         count: 0,
-        tags:['tag1','tag2','tag3']
+        tags:[]
     };
+    checkTagsLength(){
+        if (this.state.tags.length===0) return <p>There is no element to display</p>
+        return <ul>{this.state.tags.map(tag => <li key={tag}> {tag} </li>)}</ul>
+    }
+    incrementCount=()=>{
+        console.log(this.state.count++);
+    }
     render() {
         return (
             <div>
                 <span className={this.badgeStyling()}>{this.formatCount()}</span>
-                <button className="btn btn-secondary btn-sm">increment</button>
-                <ul>
-                    {this.state.tags.map(tag =><li key={tag}>{tag}</li>)}
-                </ul>
+                <button onClick={this.incrementCount} className="btn btn-secondary btn-sm">increment</button>
+                {this.checkTagsLength()}
             </div>
         )
     }
