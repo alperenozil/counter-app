@@ -14,11 +14,15 @@ export class Counter extends Component {
         return (
             <div>
                 <img src={this.state.imageUrl} alt=""></img>
-                <p></p>
-                <span style={{fontSize:30}} className="badge badge-primary m-2">{this.formatCount()}</span>
-                <button style={this.styles} className="btn btn-secondary btn-sm">increment</button>
+                <span className={this.badgeStyling()}>{this.formatCount()}</span>
+                <button className="btn btn-secondary btn-sm">increment</button>
             </div>
         )
+    }
+    badgeStyling() {
+        let classes = "badge m-2 badge-";
+        classes += this.state.count === 0 ? "warning" : "primary";
+        return classes;
     }
     formatCount(){
         const { count }=this.state;
