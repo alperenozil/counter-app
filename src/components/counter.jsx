@@ -9,14 +9,15 @@ export class Counter extends Component {
         if (this.state.tags.length===0) return <p>There is no element to display</p>
         return <ul>{this.state.tags.map(tag => <li key={tag}> {tag} </li>)}</ul>
     }
-    incrementCount=()=>{
-        console.log(this.state.count++);
+    incrementCount=productId=>{
+        console.log(productId.id);
+        this.setState({count: this.state.count+1});
     }
     render() {
         return (
             <div>
                 <span className={this.badgeStyling()}>{this.formatCount()}</span>
-                <button onClick={this.incrementCount} className="btn btn-secondary btn-sm">increment</button>
+                <button onClick={ () => this.incrementCount(productId)} className="btn btn-secondary btn-sm">increment</button>
                 {this.checkTagsLength()}
             </div>
         )
