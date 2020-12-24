@@ -17,7 +17,7 @@ export class Counter extends Component {
         return (
             <div>
                 <span className={this.badgeStyling()}>{this.formatCount()}</span>
-                <button onClick={ () => this.incrementCount(productId)} className="btn btn-secondary btn-sm">increment</button>
+                <button onClick={ () => this.incrementCount({id:this.state.count})} className="btn btn-secondary btn-sm">increment</button>
                 {this.checkTagsLength()}
             </div>
         )
